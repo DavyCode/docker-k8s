@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata: 
+  name: client-deployment
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels:
+      tier: client-web
+  template:
+    metadata: 
+      labels:
+        tier: client-web
+    spec: 
+      containers:
+        - name: client
+          image: registry.gitlab.com/davycode/docker-registry/complex-docker-client
+          ports: 
+            - containerPort: 3000
